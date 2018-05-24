@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+config/database.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -25,7 +26,6 @@
 
 /public/assets
 .byebug_history
-database.yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
