@@ -25,7 +25,11 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'grape'
 gem 'grape-swagger'
+gem 'grape-swagger-rails'
 gem 'grape-entity'
+gem 'grape-swagger-entity'
+# For representable ( https://github.com/apotonick/representable )
+gem 'grape-swagger-representable'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

@@ -1,22 +1,22 @@
 module Test
   module V1
     class Endpoints < Base
-      Grape::Middleware::Error.send :include, RespondHelper
       helpers RespondHelper
       version 'v1', using: :path
       format :json
-
-      rescue_from ApiError::Unauthorized do |error|
-        code = ApiError.get_code(error)
-        generate_error_response(error, code)
-      end
+      content_type :xml, 'application/xml'
+      content_type :json, 'application/json'
+      content_type :txt, 'text/plain'
+      content_type :txt, 'text/xml'
 
       rescue_from :all do |error|
-        if error.is_a? ApiError
+        if error.class.to_s.include?("ApiError")
           code = ApiError.get_code(error)
-          generate_error_response(error, code)
+          msg = generate_error_response(error, code)
+          error!(msg, code)
         else
-          generate_error_response(error, 500)
+          msg = generate_error_response(error, 500)
+          error!(msg, 500)
         end
       end
 
@@ -27,6 +27,12 @@ module Test
       namespace 'user' do
         mount User
       end
+
+      add_swagger_documentation(
+        base_path: '/api/test/',
+        :api_version=> "v1",
+        hide_documentation_path: true,
+      )
     end
   end
 end

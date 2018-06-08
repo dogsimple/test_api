@@ -1,5 +1,4 @@
 module ApiError
-
   Unauthorized = Class.new(StandardError)
 
   CODE = {
@@ -15,5 +14,4 @@ module ApiError
     name =  error.class.to_s.gsub(/ApiError::/,'').to_sym
     CODE[name]
   end
-
 end

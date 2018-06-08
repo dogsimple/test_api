@@ -1,6 +1,6 @@
 module Test
   module Entities
-    class Users < Grape::Entity
+    class User < Grape::Entity
       expose :name
     end
   end

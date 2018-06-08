@@ -3,7 +3,7 @@ module Test
     class Token < Base
       helpers do
         def authenticate!
-          ApiError.raise_error(:Unauthorized) if !current_user
+          ApiError.raise_error(:Unauthorized, "认证失败!") if !current_user
         end
 
         def current_user
